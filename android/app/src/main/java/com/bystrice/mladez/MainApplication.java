@@ -1,4 +1,4 @@
-package com.mladezovyzpevnik;
+package com.bystrice.mladez;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

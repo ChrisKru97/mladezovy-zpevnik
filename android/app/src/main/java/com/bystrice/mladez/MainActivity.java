@@ -1,4 +1,4 @@
-package com.mladezovyzpevnik;
+package com.bystrice.mladez;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

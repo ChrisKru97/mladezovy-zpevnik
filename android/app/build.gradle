@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.mladezovyzpevnik"
+    namespace "com.bystrice.mladez"
     defaultConfig {
-        applicationId "com.mladezovyzpevnik"
+        applicationId "com.bystrice.mladez"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
