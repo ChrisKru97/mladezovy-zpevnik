@@ -1,3 +1,17 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@types": ["types"],
+      "@components": ["components"],
+      "@helpers/*": ["helpers/*"],
+      "@screens": ["screens"],
+      "@providers": ["providers"],
+      "@constants/*": ["constants/*"],
+      "@hooks": ["hooks"],
+      "@icons": ["icons/index.android"],
+      "@icons/*": ["constaniconsts/*"]
+    }
+  }
 }

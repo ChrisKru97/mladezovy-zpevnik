@@ -25,8 +25,19 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+# TODO remove after rn fix
+def append_header_search_path(target, path)
+  target.build_configurations.each do |config|
+      # Note that there's a space character after `$(inherited)`.
+      config.build_settings["HEADER_SEARCH_PATHS"] ||= "$(inherited) "
+      config.build_settings["HEADER_SEARCH_PATHS"] << path
+  end
+end
+
 target 'mladezovyzpevnik' do
   config = use_native_modules!
+  use_frameworks! :linkage => :static
+  $RNFirebaseAsStaticFramework = true
 
   # Flags change depending on the env values.
   flags = get_default_flags()
@@ -40,7 +51,7 @@ target 'mladezovyzpevnik' do
     #
     # Note that if you have use_frameworks! enabled, Flipper will not work and
     # you should disable the next line.
-    :flipper_configuration => flipper_config,
+    # :flipper_configuration => flipper_config,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
@@ -53,5 +64,12 @@ target 'mladezovyzpevnik' do
       :mac_catalyst_enabled => false
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+
+    # TODO remove after rn fix
+    installer.pods_project.targets.each do |target|
+      if "RNScreens" == target.name
+          append_header_search_path(target, "${PODS_ROOT}/../../node_modules/react-native/ReactCommon")
+      end
+    end
   end
 end

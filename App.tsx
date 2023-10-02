@@ -1,22 +1,23 @@
-import React from 'react';
-import {SafeAreaView, StatusBar, Text, useColorScheme} from 'react-native';
+import {FC} from 'react';
+import {StatusBar} from 'react-native';
+import {Navigation} from '@providers';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {useTheme} from '@hooks';
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App: FC = () => {
+  const {isDarkMode, theme} = useTheme();
 
-  const backgroundStyle = {
-    backgroundColor: 'lightgreen',
-  };
+  const backgroundColor = theme.primary;
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaProvider style={{backgroundColor}}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        backgroundColor={backgroundColor}
       />
-      <Text>Hello world</Text>
-    </SafeAreaView>
+      <Navigation />
+    </SafeAreaProvider>
   );
-}
+};
 
 export default App;
