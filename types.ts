@@ -13,8 +13,16 @@ export type Theme = {
 export enum IconType {
   Heart,
   HeartOutlined,
+  HeartWhite,
   History,
   Keyboard,
   Search,
   Settings,
 }
+
+export type NavigationParams = {
+  Home: undefined;
+  Favorites: undefined;
+  History: undefined;
+  Song: Song;
+};

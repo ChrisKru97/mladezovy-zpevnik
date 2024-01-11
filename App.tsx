@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {StatusBar} from 'react-native';
-import {Navigation} from '@providers';
+import {Navigation, SongsContextProvider} from '@providers';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useTheme} from '@hooks';
 
@@ -15,7 +15,9 @@ const App: FC = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundColor}
       />
-      <Navigation />
+      <SongsContextProvider>
+        <Navigation />
+      </SongsContextProvider>
     </SafeAreaProvider>
   );
 };

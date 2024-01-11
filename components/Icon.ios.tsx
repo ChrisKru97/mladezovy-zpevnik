@@ -13,6 +13,13 @@ const Icon: FC<Props> = ({type}) => {
       return (
         <VectorImage source={require('icons/heart.svg')} style={styles.icon} />
       );
+    case IconType.HeartWhite:
+      return (
+        <VectorImage
+          source={require('icons/heart-white.svg')}
+          style={styles.icon}
+        />
+      );
     case IconType.HeartOutlined:
       return (
         <VectorImage
@@ -52,8 +59,8 @@ const Icon: FC<Props> = ({type}) => {
 
 const styles = StyleSheet.create({
   icon: {
-    height: 26,
-    width: 26,
+    height: 24,
+    width: 24,
   },
 });
 

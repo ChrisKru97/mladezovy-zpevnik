@@ -5,11 +5,13 @@ import SongItem from './SongItem';
 
 interface Props {
   songs: Song[];
+  paddingBottom: number;
 }
 
-const SongList: FC<Props> = ({songs}) => {
+const SongList: FC<Props> = ({songs, paddingBottom}) => {
   return (
     <FlashList
+      contentContainerStyle={{paddingBottom: paddingBottom}}
       data={songs}
       renderItem={({item}) => <SongItem song={item} />}
       estimatedItemSize={51}
